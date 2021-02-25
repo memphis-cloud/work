@@ -9,7 +9,7 @@ class App extends React.Component{
         justifyContent: "center", 
         alignItems: "center"}}>
       <Text>Hellow world</Text>
-      <Text>Hellow world</Text>
+      <Text></Text>
       </View>
     )
   }
