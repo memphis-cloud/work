@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import Button from "./component/Button";
+import Button from "./components/Button";
 
 class App extends React.Component {
     state = {
