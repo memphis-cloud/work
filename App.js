@@ -5,6 +5,9 @@ class App extends React.Component{
   render(){
     return(
       <Text>check dev branch</Text>
+      <Text>check dev branch</Text>
+      <Text>check dev branch</Text>
+      <Text>check dev branch</Text>
       <View/>
     )
   }
