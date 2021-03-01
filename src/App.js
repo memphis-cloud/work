@@ -1,25 +1,27 @@
 import React from "react";
-import {View} from "react-native";
-import Button from "./components/Button"
-import Counter from "./components/Counter"
+import { View, Text } from "react-native";
+import Button from "./components/Button";
 
-
-
-class App extends React.Component{
+class App extends React.Component {
     state = {
-        count:0;
+        count: 0
     }
-    render(){
-        return(
+
+    increacse = () => {
+        this.setState({count: this.state.count + 3})
+    }
+
+    render() {
+        return (
             <View
-            style={{
-                flex:1,
-                justifyContent: "center",
-                alignItems: "center"
-            }}
+                style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}
             >
-            <Text>{this.state.count}</Text>
-            <Button/>
+                <Text>{this.state.count}</Text>
+                <Button increacse={this.increacse} />
             </View>
         )
     }
