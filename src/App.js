@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {AppRegistry,  View, Image, StyleSheet,Text} from "react-native";
+import Categories from "./components/Categories";
 
 /*   let arr=[
     {image: 'https://kto-ozvuchil.ru/wp-content/uploads/shrek2.jpg'},
@@ -11,6 +12,7 @@ import {AppRegistry,  View, Image, StyleSheet,Text} from "react-native";
 class App extends React.Component {
     render() {
         return (
+            <Categories />
         )
     }
 }
