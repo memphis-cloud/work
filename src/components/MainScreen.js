@@ -1,7 +1,7 @@
 import React from 'react';
-import { FlatList, View} from 'react-native';
+import { FlatList} from 'react-native';
 import renderItem from "./renderItem"
-//import Categories from "./Categories"
+
 class MainScreen extends React.Component{
     state={
         subjects: [
@@ -22,13 +22,11 @@ class MainScreen extends React.Component{
     render(){
         const {subjects} = this.state;
         return(
-            // <View>
-             <FlatList
+             <FlatList showsVerticalScrollIndicator={false}
                 data={subjects}
                 renderItem={renderItem}
                 keyExtrator={item => item.product}
                 />
-            // </View>
         )
     }
 }

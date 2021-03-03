@@ -21,29 +21,22 @@ class Categories extends React.Component {
             }
         ]
     }
-
     render() {
         const { categories } = this.state
         return (
-/*             <View
-                style={{
-                    flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center"
-                }}> */
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     {
                         categories.map((item) => (
                             <View style={{paddingTop:10, paddingRight:10, height: 70}}
                                 key={item.name}>
-                                <TouchableOpacity style={{padding: 12, borderColor: '#a0a0a0', borderRadius:20,borderWidth: 1}}>
+                                <TouchableOpacity style={{padding: 12, borderColor: '#a0a0a0', borderRadius:20,borderWidth: 1}}
+                                >
                                     <Text style={{ color: 'black', fontSize: 20}}>{item.name}</Text>
                                 </TouchableOpacity>
                             </View>
                         ))
                     }
                 </ScrollView>
-            // </View>
         )
     }
 }

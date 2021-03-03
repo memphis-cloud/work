@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { AppRegistry, View, Image, StyleSheet, Text, ScrollView, FlatList } from "react-native";
-
+import {  View, Image,  Text, Dimensions } from "react-native";
+const window1 = Dimensions.get("window").width;
 const renderItem = ({ item }) => (
     <View>
-        <Image style={{ width: 300, height: 300 }}
+        <Image style={{ width: window1, height: 400}}
             source={{ uri: item.product }}
         />
-        <Text>{item.title}</Text>
+        <Text style={{textAlign: "center",padding: 10, bottom: 40, backgroundColor: "#808080", opacity: 0.8, color: "black"}}>{item.title}</Text>
         </View>
 )
 
