@@ -12,6 +12,12 @@ class Categories extends React.Component {
             },
             {
                 name: 'Крупы'
+            },
+            {
+                name: 'Колбаса и сосиски'
+            },
+            {
+                name: 'Овощи'
             }
         ]
     }
@@ -19,25 +25,25 @@ class Categories extends React.Component {
     render() {
         const { categories } = this.state
         return (
-            <View
+/*             <View
                 style={{
                     flex: 1,
                     justifyContent: "center",
                     alignItems: "center"
-                }}>
-                <ScrollView horizontal={true}>
+                }}> */
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     {
                         categories.map((item) => (
-                            <View
+                            <View style={{paddingTop:10, paddingRight:10, height: 70}}
                                 key={item.name}>
-                                <TouchableOpacity style={{padding:12, borderColor: 'black', borderRadius:10,borderWidth: 1}}>
-                                    <Text style={{ color: 'red' }}>{item.name}</Text>
+                                <TouchableOpacity style={{padding: 12, borderColor: '#a0a0a0', borderRadius:20,borderWidth: 1}}>
+                                    <Text style={{ color: 'black', fontSize: 20}}>{item.name}</Text>
                                 </TouchableOpacity>
                             </View>
                         ))
                     }
                 </ScrollView>
-            </View>
+            // </View>
         )
     }
 }
