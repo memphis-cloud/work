@@ -4,11 +4,20 @@ import Categories from "./components/Categories";
 import MainScreen from "./components/MainScreen";
 
 class App extends React.Component {
+    state={
+        idCategory: 0
+    }
+    filtr = (value) =>{
+        this.setState({idCategory: value})
+    }
     render() {
         return (
             <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
-                <Categories />
-                <MainScreen />
+                <Categories filtr={this.filtr}
+                
+                />
+                <MainScreen
+                idCategory ={this.state.idCategory} />
             </View>
         )
     }
