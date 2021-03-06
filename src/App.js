@@ -1,14 +1,30 @@
 import React from "react";
-import {View} from "react-native";
-import Categories from "./components/Categories";
-import MainScreen from "./components/MainScreen";
-
+import {View, Text} from "react-native";
+import Button from "./components/Button"
+import Name2 from "./components/Name2";
 class App extends React.Component {
+
+state ={
+    name: "Oleg",
+    count:0
+}
+increacse = (value) => {
+    this.setState({name: value})
+}
     render() {
         return (
-            <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
-                <Categories />
-                <MainScreen />
+            <View 
+            style={{
+                alignItems: "center",
+                flex: 1,
+                justifyContent: "center"
+            }}
+            >
+                <Text>
+                    {/* {this.state.name} */}
+                </Text>
+                <Button swap={this.increacse}/>
+                <Name2 name={this.state.name}/>
             </View>
         )
     }
