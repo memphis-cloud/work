@@ -3,32 +3,32 @@ import {Text, TextInput, View, Dimensions, TouchableOpacity, ScrollView} from "r
 
 class Scroll extends React.Component{
     render(){
-        const {shoplist} = this.props
+        const {shoplist, deleteElement} = this.props
         return(
                     <ScrollView
                     >
                         {
                             shoplist.map((item)=>(
                                 <View
-                                key={item.myInput}
+                                key={item.id}
                                 style={{
                                     flex:1,
                                     flexDirection:'row',
                                     justifyContent:'space-between'
                                 }}
                                 >
-                                    <Text>
-                                    {item}
-                                    </Text>
+                                    {item.id!=0&&<Text>
+                                    {item.itemName}
+                                    </Text>}
                                     <TouchableOpacity
+                                     onPress={() => {deleteElement(item.id) }}
                                     >
-                                        <Text>
-                                            Удалить
-                                        </Text>
+                                    {item.id!=0 && <Text>
+                                           Удалить
+                                        </Text>}
                                     </TouchableOpacity>
                                 </View>
                             ))
-                            
                         }
                     </ScrollView>
         )
