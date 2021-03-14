@@ -8,7 +8,8 @@ class ShopList extends React.Component{
         const {shoplist, onAdd, onChangeInput, deleteElement} = this.props
         return(
             <View style={{
-                flex:1
+                flex:1,
+                position: 'relative'
             }}>
             <Scroll
             shoplist={shoplist}
