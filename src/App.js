@@ -18,25 +18,15 @@ class App extends React.Component {
         this.setState({ myInput: value})
     }
     onAdd = () => {
-        const {myInput, shoplist} = this.state;
-        shoplist.push({id: shoplist.length, itemName:myInput, isEnabled: false});
-        this.setState({shoplist, myInput: ''})
+        const {myInput, shoplist, count} = this.state;
+        shoplist.push({id: count + 1, itemName:myInput, isEnabled: false});
+        this.setState({shoplist, myInput: '', count: this.state.count + 1})
     }
-    // refreshid = () =>{
-    //     const {shoplist} = this.state
-    //     for (let i=0;i< shoplist.length-1; i++){
-    //         shoplist.id = i;
-    //         // alert(shoplist.id);
-    //          console.log(shoplist.id)
-    //          console.log(this.state.shoplist.isEnabled)
-    //         // <Text>{shoplist.id}</Text>
-    //     }
-    // }
-    deleteElement = id => {
+    deleteElement = id => {         
         this.setState(prevState => ({
           shoplist: prevState.shoplist.filter(el => el.id != id),
         }))
-        // this.setState(this.refreshid)
+         
         // {console.log(this.refreshid());}
       }
 
@@ -62,7 +52,6 @@ class App extends React.Component {
         )
     }
 }
-
 export default App;
 /*
 ctrl + / - однострочный комментарий
