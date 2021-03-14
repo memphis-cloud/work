@@ -7,27 +7,49 @@ class App extends React.Component {
         myInput: '',
         shoplist: [
             {
-                id: '',
-                itemName: '',
+                 id: 0,
+                 itemName: 'Этот элемент нулевой',
+                isEnabled: 0,
             }
         ],
+        count: 0
     }
     onChangeInput = (value) => {
         this.setState({ myInput: value})
     }
     onAdd = () => {
         const {myInput, shoplist} = this.state;
-        shoplist.push({id: shoplist.length + 1, itemName:myInput});
+        shoplist.push({id: shoplist.length, itemName:myInput, isEnabled: false});
         this.setState({shoplist, myInput: ''})
     }
-
+    // refreshid = () =>{
+    //     const {shoplist} = this.state
+    //     for (let i=0;i< shoplist.length-1; i++){
+    //         shoplist.id = i;
+    //         // alert(shoplist.id);
+    //          console.log(shoplist.id)
+    //          console.log(this.state.shoplist.isEnabled)
+    //         // <Text>{shoplist.id}</Text>
+    //     }
+    // }
     deleteElement = id => {
         this.setState(prevState => ({
-          shoplist: prevState.shoplist.filter(el => el.id != id)
+          shoplist: prevState.shoplist.filter(el => el.id != id),
         }))
+        // this.setState(this.refreshid)
+        // {console.log(this.refreshid());}
       }
 
-
+    // toggleSwitch = id => {
+    //     let selectedItemIndex = this.state.shoplist.findIndex(item => item.id === id);
+    //     // console.log(this.state.shoplist.findIndex(item => item.id === id)) //2
+    //     if (selectedItemIndex !== this.state.isEnabled) {
+    //      this.setState({isEnabled: selectedItemIndex}); //undefined, 2
+    //     //  console.log(this.setState({isEnabled: selectedItemIndex}))
+    //     }else{
+    //  this.setState({isEnabled: null});
+    // }
+    //   };
     render() {
         const { shoplist} = this.state
         return (

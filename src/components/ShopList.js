@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, TextInput, View, Dimensions, TouchableOpacity, FlatList} from "react-native";
+import {View} from "react-native";
 import Scroll from "./Scroll";
 import Footer from "./Footer";
 
