@@ -12,42 +12,45 @@ class App extends React.Component {
                 isEnabled: 0,
             }
         ],
-        count: 0
+        count: 0,
+        forclear: 1
     }
+
+    counting = () => {
+        this.setState({forclear: this.state.forclear + 1})
+    }
+
+    uncounting = () => {
+        this.setState({forclear: this.state.forclear -1})
+    }
+
     onChangeInput = (value) => {
         this.setState({ myInput: value})
     }
+
     onAdd = () => {
         const {myInput, shoplist, count} = this.state;
         shoplist.push({id: count + 1, itemName:myInput, isEnabled: false});
         this.setState({shoplist, myInput: '', count: this.state.count + 1})
     }
+
     deleteElement = id => {         
         this.setState(prevState => ({
           shoplist: prevState.shoplist.filter(el => el.id != id),
         }))
-         
-        // {console.log(this.refreshid());}
       }
 
-    // toggleSwitch = id => {
-    //     let selectedItemIndex = this.state.shoplist.findIndex(item => item.id === id);
-    //     // console.log(this.state.shoplist.findIndex(item => item.id === id)) //2
-    //     if (selectedItemIndex !== this.state.isEnabled) {
-    //      this.setState({isEnabled: selectedItemIndex}); //undefined, 2
-    //     //  console.log(this.setState({isEnabled: selectedItemIndex}))
-    //     }else{
-    //  this.setState({isEnabled: null});
-    // }
-    //   };
     render() {
-        const { shoplist} = this.state
+        const { shoplist, forclear} = this.state
         return (
             <ShopList
                 deleteElement={this.deleteElement}
                 shoplist={shoplist}
                 onAdd={this.onAdd}
                 onChangeInput={this.onChangeInput}
+                forclear={forclear}
+                counting={this.counting}
+                uncounting={this.uncounting}
             />
         )
     }

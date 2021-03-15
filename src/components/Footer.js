@@ -3,7 +3,7 @@ import { Text, TextInput, View, Dimensions, TouchableOpacity } from "react-nativ
 const window1 = Dimensions.get("window").width;
 class Footer extends React.Component {
     render() {
-        const {onChangeInput, onAdd} = this.props
+        const {onChangeInput, onAdd, forclear, shoplist} = this.props
         return (           
             <View
             style={{
@@ -12,7 +12,10 @@ class Footer extends React.Component {
                 alignItems: 'flex-end',
                  margin:6,
                 justifyContent:'space-between',
-                bottom: 10,
+                position:'relative',
+                  bottom: 13,
+                //  top:10,
+                //  top: 200,
                 // shadowOffset: { width: 100, height: 100},
                 // shadowColor: '#000',
                 // shadowOpacity: 1,
@@ -20,10 +23,23 @@ class Footer extends React.Component {
                 // backgroundColor : "#0000",
                 // //  elevation: 1,
                 // //   position:'absolute',
-                //     backgroundColor: 'red',
-                //  top:600
+                    //    backgroundColor: 'red',
+                //  op:600
             }}
             >
+                {(forclear==shoplist.length) && forclear!=1 && <TouchableOpacity
+                                style={{
+                                    flex:1,
+                                     position:'absolute',
+                                    // alignContent:'center',
+                                    // justifyContent:'center',
+                                     bottom:70,
+                                     left:window1*0.3
+                                }}
+                                // onPress={}
+                                >
+                <Text>Завершить покупку</Text>
+                </TouchableOpacity>}
             <TextInput
             style={{ height: 60, borderColor: 'gray', borderWidth: 1, width: window1 - 100 }}
             onChangeText={onChangeInput}
