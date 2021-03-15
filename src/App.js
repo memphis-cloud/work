@@ -39,8 +39,21 @@ class App extends React.Component {
           shoplist: prevState.shoplist.filter(el => el.id != id),
         }))
       }
+    
+    allClear = () =>{
+            let arr=[
+                {
+                    id: 0,
+                    itemName: 'Этот элемент нулевой',
+                   isEnabled: 0,
+                }
+            ];
+        this.setState({shoplist: arr, count: 0, forclear: 1})
+        alert('Вы купили все, что было необходимо? Точно? Ну и отлично! (Любое развитие - хорошо, даже развитие паранойи © Рочев И. С.)')
+    }
 
     render() {
+
         const { shoplist, forclear} = this.state
         return (
             <ShopList
@@ -51,6 +64,7 @@ class App extends React.Component {
                 forclear={forclear}
                 counting={this.counting}
                 uncounting={this.uncounting}
+                allClear={this.allClear}
             />
         )
     }

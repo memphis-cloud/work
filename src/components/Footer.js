@@ -3,7 +3,7 @@ import { Text, TextInput, View, Dimensions, TouchableOpacity } from "react-nativ
 const window1 = Dimensions.get("window").width;
 class Footer extends React.Component {
     render() {
-        const {onChangeInput, onAdd, forclear, shoplist} = this.props
+        const {onChangeInput, onAdd, forclear, shoplist, allClear} = this.props
         return (           
             <View
             style={{
@@ -36,7 +36,7 @@ class Footer extends React.Component {
                                      bottom:70,
                                      left:window1*0.3
                                 }}
-                                // onPress={}
+                                 onPress={allClear}
                                 >
                 <Text>Завершить покупку</Text>
                 </TouchableOpacity>}
