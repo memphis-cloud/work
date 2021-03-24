@@ -7,54 +7,58 @@ class App extends React.Component {
         myInput: '',
         shoplist: [
             {
-                 id: 0,
-                 itemName: 'Этот элемент нулевой',
-                isEnabled: 0,
+                id: 0,
+                itemName: '',
+                isEnabled: false,
             }
         ],
         count: 0,
-        forclear: 1
+        forclear: 1,
     }
 
     counting = () => {
-        this.setState({forclear: this.state.forclear + 1})
+        this.setState({ forclear: this.state.forclear + 1 })
     }
 
     uncounting = () => {
-        this.setState({forclear: this.state.forclear -1})
+        this.setState({ forclear: this.state.forclear - 1 })
     }
 
     onChangeInput = (value) => {
-        this.setState({ myInput: value})
+        this.setState({ myInput: value })
     }
 
     onAdd = () => {
-        const {myInput, shoplist, count} = this.state;
-        shoplist.push({id: count + 1, itemName:myInput, isEnabled: false});
-        this.setState({shoplist, myInput: '', count: this.state.count + 1})
+        const { myInput, shoplist, count } = this.state;
+        if (myInput != '') {
+            shoplist.push({ id: count + 1, itemName: myInput, isEnabled: false });
+            this.setState({ shoplist, myInput: '', count: this.state.count + 1 })
+        }
     }
 
-    deleteElement = id => {         
+    deleteElement = (id, index) => {
         this.setState(prevState => ({
-          shoplist: prevState.shoplist.filter(el => el.id != id),
-        }))
-      }
-    
-    allClear = () =>{
-            let arr=[
-                {
-                    id: 0,
-                    itemName: 'Этот элемент нулевой',
-                   isEnabled: 0,
-                }
-            ];
-        this.setState({shoplist: arr, count: 0, forclear: 1})
+            shoplist: prevState.shoplist.filter(el => el.id != id),
+        }));
+        if (this.state.shoplist[index].isEnabled) {
+            this.setState({ forclear: this.state.forclear - 1 })
+        }
+    };
+    allClear = () => {
+        let arr = [
+            {
+                id: 0,
+                itemName: '',
+                isEnabled: false,
+            }
+        ];
+        this.setState({ shoplist: arr, count: 0, forclear: 1 })
         alert('Вы купили все, что было необходимо? Точно? Ну и отлично! (Любое развитие - хорошо, даже развитие паранойи © Рочев И. С.)')
     }
 
     render() {
 
-        const { shoplist, forclear} = this.state
+        const { shoplist, forclear, myInput} = this.state
         return (
             <ShopList
                 deleteElement={this.deleteElement}
@@ -65,6 +69,7 @@ class App extends React.Component {
                 counting={this.counting}
                 uncounting={this.uncounting}
                 allClear={this.allClear}
+                myInput={myInput}
             />
         )
     }
