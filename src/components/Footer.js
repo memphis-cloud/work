@@ -16,17 +16,18 @@ class Footer extends React.Component {
                     bottom: 13,
                 }}
             >
-                {(forclear == shoplist.length) && forclear != 1 && <TouchableOpacity
-                    style={{
-                        flex: 1,
-                        position: 'absolute',
-                        bottom: 70,
-                        left: window1 * 0.3
-                    }}
-                    onPress={allClear}
-                >
-                    <Text>Завершить покупку</Text>
-                </TouchableOpacity>}
+                { (forclear == shoplist.length) && forclear != 1 &&
+                    <TouchableOpacity
+                        style={{
+                            flex: 1,
+                            position: 'absolute',
+                            bottom: 70,
+                            left: window1 * 0.3
+                        }}
+                        onPress={allClear}
+                    >
+                        <Text>Завершить покупку</Text>
+                    </TouchableOpacity>}
                 <TextInput
                     style={{ height: 60, borderColor: 'gray', borderWidth: 1, width: window1 - 100 }}
                     onChangeText={onChangeInput}

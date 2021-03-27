@@ -1,6 +1,6 @@
 import React from 'react';
 import ShopList from "./components/ShopList"
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 class App extends React.Component {
     state = {
@@ -17,31 +17,64 @@ class App extends React.Component {
     }
 
     counting = () => {
-        this.setState({ forclear: this.state.forclear + 1 })
+        this.persistState({ forclear: this.state.forclear + 1 })
     }
 
     uncounting = () => {
-        this.setState({ forclear: this.state.forclear - 1 })
+        this.persistState({ forclear: this.state.forclear - 1 })
     }
 
     onChangeInput = (value) => {
         this.setState({ myInput: value })
     }
 
+    componentDidMount() {
+        this.init()
+    }
+
+    init = async () => {
+        try {
+            const persistedStateShoplist = await AsyncStorage.getItem('shoplist');
+            const persistedStateCount = await AsyncStorage.getItem('count');
+            const persistedStateForclear = await AsyncStorage.getItem('forclear');
+            if (!persistedStateShoplist && !persistedStateCount && !persistedStateForclear) return
+            this.setState({
+                shoplist: JSON.parse(persistedStateShoplist),
+                count: JSON.parse(persistedStateCount),
+                forclear: JSON.parse(persistedStateForclear),
+            })
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    persistState = (newState) => {
+        this.setState(newState, async () => {
+            try {
+                await AsyncStorage.setItem('shoplist', JSON.stringify(this.state.shoplist))
+                await AsyncStorage.setItem('count', JSON.stringify(this.state.count))
+                await AsyncStorage.setItem('forclear', JSON.stringify(this.state.forclear))
+            } catch (e) {
+                console.error(e)
+            }
+        })
+
+    }
+
     onAdd = () => {
         const { myInput, shoplist, count } = this.state;
         if (myInput != '') {
             shoplist.push({ id: count + 1, itemName: myInput, isEnabled: false });
-            this.setState({ shoplist, myInput: '', count: this.state.count + 1 })
+            this.persistState({ shoplist, myInput: '', count: this.state.count + 1 })
         }
     }
 
     deleteElement = (id, index) => {
-        this.setState(prevState => ({
+        this.persistState(prevState => ({
             shoplist: prevState.shoplist.filter(el => el.id != id),
         }));
         if (this.state.shoplist[index].isEnabled) {
-            this.setState({ forclear: this.state.forclear - 1 })
+            this.persistState({ forclear: this.state.forclear - 1 })
         }
     };
     allClear = () => {
@@ -52,13 +85,13 @@ class App extends React.Component {
                 isEnabled: false,
             }
         ];
-        this.setState({ shoplist: arr, count: 0, forclear: 1 })
+        this.persistState({ shoplist: arr, count: 0, forclear: 1 })
         alert('Вы купили все, что было необходимо? Точно? Ну и отлично! (Любое развитие - хорошо, даже развитие паранойи © Рочев И. С.)')
     }
 
     render() {
 
-        const { shoplist, forclear, myInput} = this.state
+        const { shoplist, forclear, myInput } = this.state
         return (
             <ShopList
                 deleteElement={this.deleteElement}
