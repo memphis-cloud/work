@@ -61,10 +61,12 @@ class Home extends React.Component {
         })
 
     }
+
     navigateCreateProduct = () => {
-        const { navigation } = this.props;
-        navigation.navigate('secondScreen')
+        const { navigation} = this.props;
+        navigation.navigate('create-product')
     }
+
     onAdd = () => {
         const { myInput, shoplist, count } = this.state;
         if (myInput != '') {

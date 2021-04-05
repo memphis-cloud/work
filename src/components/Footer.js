@@ -1,9 +1,9 @@
 import React from "react";
-import { Text, TextInput, View, Dimensions, TouchableOpacity } from "react-native";
+import { Text, View, Dimensions, TouchableOpacity } from "react-native";
 const window1 = Dimensions.get("window").width;
 class Footer extends React.Component {
     render() {
-        const { onChangeInput, onAdd, forclear, shoplist, allClear, myInput } = this.props
+        const { forclear, shoplist, allClear } = this.props
         return (
             <View
                 style={{
@@ -28,24 +28,6 @@ class Footer extends React.Component {
                     >
                         <Text>Завершить покупку</Text>
                     </TouchableOpacity>}
-                <TextInput
-                    style={{ height: 60, borderColor: 'gray', borderWidth: 1, width: window1 - 100 }}
-                    onChangeText={onChangeInput}
-                    value={myInput}
-                />
-                <TouchableOpacity
-                    style={{ borderRadius: 25, borderWidth: 1, borderColor: '#a0a0a0', width: 85, height: 60, justifyContent: 'center' }}
-                    onPress={onAdd}
-                >
-                    <Text
-                        style={{
-                            textAlign: 'center',
-                            fontSize: 20
-                        }}
-                    >
-                        ОК
-                </Text>
-                </TouchableOpacity>
             </View>
         )
     }

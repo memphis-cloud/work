@@ -18,12 +18,9 @@ class ShopList extends React.Component {
                     uncounting={uncounting}
                 />
                 <Footer
-                    onChangeInput={onChangeInput}
-                    onAdd={onAdd}
                     forclear={forclear}
                     shoplist={shoplist}
                     allClear={allClear}
-                    myInput={myInput}
                 />
             </View>
         )

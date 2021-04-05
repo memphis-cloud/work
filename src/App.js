@@ -1,25 +1,14 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import FirstScreen from './screens/FirstScreen';
-import EmptyPage from './screens/EmptyPage';
-const Stack = createStackNavigator();
-
+import RootNavigator from './navigators/RootNavigator'
 
 class App extends React.Component {
     render() {
         return (
-            <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen name="firstScreen" component={FirstScreen} />
-                    <Stack.Screen name="secondScreen" component={EmptyPage} />
-                </Stack.Navigator>
-            </NavigationContainer>
+            <RootNavigator />
         )
-
     }
-
 }
+
 export default App;
 /*
 ctrl + / - однострочный комментарий
