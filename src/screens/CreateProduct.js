@@ -1,11 +1,15 @@
 import React from 'react';
 import { Text, TextInput, View, Dimensions, TouchableOpacity } from "react-native";
-import { roundToNearestPixel } from 'react-native/Libraries/Utilities/PixelRatio';
+import { AppState } from '../Index'
 const window1 = Dimensions.get("window").width;
 
-class EmptyPage extends React.Component {
+class CreateProduct extends React.Component {
+    state = {
+        input: ''
+    }
     render() {
-        const { forclear, shoplist, allClear, onChangeInput, onAdd, myInput } = this.props
+        const { navigation } = this.props
+        const { input } = this.state
         return (
             <View
                 style={{
@@ -18,27 +22,34 @@ class EmptyPage extends React.Component {
                     bottom: 13,
                 }}
             >
-                <Text>{ }</Text>
                 <TextInput
                     style={{ height: 60, borderColor: 'gray', borderWidth: 1, width: window1 - 100 }}
-                    onChangeText={onChangeInput}
-                    value={myInput}
+                    onChangeText={(input) => this.setState({ input })}
+                    value={input}
                 />
-                <TouchableOpacity
-                    style={{ borderRadius: 25, borderWidth: 1, borderColor: '#a0a0a0', width: 85, height: 60, justifyContent: 'center' }}
-                    onPress={onAdd}
-                >
-                    <Text
-                        style={{
-                            textAlign: 'center',
-                            fontSize: 20
-                        }}
-                    >
-                        ОК
-                </Text>
-                </TouchableOpacity>
+                <AppState.Consumer>
+                    {
+                        ({ onAdd }) => (<TouchableOpacity
+                            style={{ borderRadius: 25, borderWidth: 1, borderColor: '#a0a0a0', width: 85, height: 60, justifyContent: 'center' }}
+                            onPress={() => {
+                                onAdd(input)
+                                navigation.navigate('home')
+                            }}
+                        >
+                            <Text
+                                style={{
+                                    textAlign: 'center',
+                                    fontSize: 20
+                                }}
+                            >
+                                ОК
+                    </Text>
+                        </TouchableOpacity>)
+
+                    }
+                </AppState.Consumer>
             </View>
         )
     }
 }
-export default EmptyPage;
+export default CreateProduct;

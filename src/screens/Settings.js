@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-class SecondPage extends React.Component {
+class Settings extends React.Component {
     render() {
         return (
             <View style={{
@@ -17,4 +17,4 @@ class SecondPage extends React.Component {
 
 }
 
-export default SecondPage;
+export default Settings;

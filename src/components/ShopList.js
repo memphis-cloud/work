@@ -5,7 +5,7 @@ import Footer from "./Footer";
 
 class ShopList extends React.Component {
     render() {
-        const { shoplist, onAdd, onChangeInput, deleteElement, forclear, counting, uncounting, allClear, myInput } = this.props
+        const { shoplist, deleteElement, forclear, counting, uncounting, allClear, myInput } = this.props
         return (
             <View style={{
                 flex: 1,

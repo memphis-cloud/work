@@ -5,7 +5,8 @@ class ActButton extends React.Component {
 
     render() {
         return (
-            <ActionButton buttonColor="rgba(231,76,60,1)"
+            <ActionButton
+                buttonColor="rgba(231,76,60,1)"
                 onPress={this.props.onPress}
             />
 

@@ -11,7 +11,7 @@ class RootNavigator extends React.Component {
         return (
             <NavigationContainer>
                 <Stack.Navigator>
-                    <Stack.Screen
+                      <Stack.Screen
                         name='main'
                         options={{ title: 'Покупки' }}
                         component={MainNavigator}

@@ -12,6 +12,7 @@ class MainNavigator extends React.Component {
                     name='home'
                     options={{ title: 'Покупки' }}
                     component={Home}
+                    initialParams={{}}
                 />
                 <Tab.Screen
                     name='settings'
